@@ -10,8 +10,15 @@ window.addEventListener("resize", () => {
     init();
 });
 
+class Snake {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
 const init = () => {
-    // Your code
+    
 };
 
 // Call init()

@@ -10,6 +10,7 @@ body {
     height: 100dvh;
     align-items: center;
     justify-content: center;
+    background-color: rgb(20, 20, 20);
 }
 
 .game-area {
@@ -17,9 +18,9 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: beige;
+    background-color: rgb(20, 20, 20);
 }
 
 canvas {
-    background-color: black;
+    background-color: rgb(10, 10, 10);
 }
