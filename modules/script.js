@@ -11,14 +11,21 @@ window.addEventListener("resize", () => {
 });
 
 class Snake {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 
+let snake;
+
+let loc = { x: undefined, y: undefined };
+
 const init = () => {
-    
+    loc.x = 0;
+    loc.y = 0;
+
+    snake = new Snake(loc.x, loc.y);
 };
 
 // Call init()
