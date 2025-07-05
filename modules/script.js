@@ -15,6 +15,13 @@ class Snake {
         this.x = x;
         this.y = y;
     }
+    
+    drawSnake() {
+        ctx.beginPath();
+        ctx.arc(0, 0, 16, 0, 2 * Math.PI, false);
+        ctx.fillStyle = "white";
+        ctx.stroke();
+    }
 }
 
 let snake;
@@ -26,6 +33,7 @@ const init = () => {
     loc.y = 0;
 
     snake = new Snake(loc.x, loc.y);
+    snake.drawSnake();
 };
 
 // Call init()
@@ -34,8 +42,8 @@ init();
 // Animate function
 const animate = () => {
     requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Your code
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    snake.drawSnake();
 };
 
 // Call animate()
