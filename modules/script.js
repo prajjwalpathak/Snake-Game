@@ -15,11 +15,13 @@ class Snake {
         this.x = x;
         this.y = y;
     }
-    
+
     drawSnake() {
         ctx.beginPath();
-        ctx.arc(0, 0, 16, 0, 2 * Math.PI, false);
+        ctx.arc(this.x, this.y, 16, 0, 2 * Math.PI, false);
         ctx.fillStyle = "white";
+        ctx.strokeStyle = "white";
+        ctx.fill();
         ctx.stroke();
     }
 }
@@ -29,8 +31,8 @@ let snake;
 let loc = { x: undefined, y: undefined };
 
 const init = () => {
-    loc.x = 0;
-    loc.y = 0;
+    loc.x = canvas.width / 2;
+    loc.y = canvas.height / 2;
 
     snake = new Snake(loc.x, loc.y);
     snake.drawSnake();
