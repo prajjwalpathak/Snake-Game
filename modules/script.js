@@ -1,12 +1,14 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerHeight < window.innerWidth ? window.innerHeight * 0.9 : window.innerWidth * 0.9;
-canvas.height = window.innerHeight < window.innerWidth ? window.innerHeight * 0.9 : window.innerWidth * 0.9;
+let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
+canvas.width = 80 * unit;
+canvas.height = 80 * unit;
 
 // Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
-    canvas.width = window.innerHeight < window.innerWidth ? window.innerHeight * 0.9 : window.innerWidth * 0.9;
-    canvas.height = window.innerHeight < window.innerWidth ? window.innerHeight * 0.9 : window.innerWidth * 0.9;
+    unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
+    canvas.width = 80 * unit;
+    canvas.height = 80 * unit;
     init();
 });
 
@@ -18,11 +20,9 @@ class Snake {
 
     drawSnake() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 16, 0, 2 * Math.PI, false);
+        ctx.arc(this.x, this.y, 2*unit, 0, 2 * Math.PI, false);
         ctx.fillStyle = "white";
-        ctx.strokeStyle = "white";
         ctx.fill();
-        ctx.stroke();
     }
 }
 
@@ -44,7 +44,7 @@ init();
 // Animate function
 const animate = () => {
     requestAnimationFrame(animate);
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.drawSnake();
 };
 
