@@ -20,9 +20,14 @@ class Snake {
 
     drawSnake() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 2*unit, 0, 2 * Math.PI, false);
+        ctx.arc(this.x, this.y, 2 * unit, 0, 2 * Math.PI, false);
         ctx.fillStyle = "white";
         ctx.fill();
+    }
+
+    moveSnake() {
+        this.x += unit/2;
+        this.drawSnake();
     }
 }
 
@@ -31,8 +36,8 @@ let snake;
 let loc = { x: undefined, y: undefined };
 
 const init = () => {
-    loc.x = canvas.width / 2;
-    loc.y = canvas.height / 2;
+    loc.x = 2 * unit;
+    loc.y = 2 * unit;
 
     snake = new Snake(loc.x, loc.y);
     snake.drawSnake();
@@ -46,6 +51,7 @@ const animate = () => {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.drawSnake();
+    // snake.moveSnake();
 };
 
 // Call animate()
