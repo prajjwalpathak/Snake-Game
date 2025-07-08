@@ -26,21 +26,42 @@ class Snake {
     }
 
     moveSnake() {
-        this.x += unit/2;
+        this.x += unit / 2;
         this.drawSnake();
     }
 }
 
-let snake;
+class Food {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
 
-let loc = { x: undefined, y: undefined };
+    drawFood() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, unit, 0, 2 * Math.PI, false);
+        ctx.fillStyle = "red";
+        ctx.fill();
+    }
+}
+
+let snake;
+let food;
+
+let snakeLoc = { x: undefined, y: undefined };
+let foodLoc = { x: undefined, y: undefined };
 
 const init = () => {
-    loc.x = 2 * unit;
-    loc.y = 2 * unit;
+    snakeLoc.x = 2 * unit;
+    snakeLoc.y = 2 * unit;
 
-    snake = new Snake(loc.x, loc.y);
+    foodLoc.x = 8 * unit;
+    foodLoc.y = 8 * unit;
+
+    snake = new Snake(snakeLoc.x, snakeLoc.y);
+    food = new Food(foodLoc.x, foodLoc.y);
     snake.drawSnake();
+    food.drawFood();
 };
 
 // Call init()
@@ -51,6 +72,7 @@ const animate = () => {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.drawSnake();
+    food.drawFood();
     // snake.moveSnake();
 };
 
