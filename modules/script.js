@@ -25,8 +25,11 @@ class Snake {
         ctx.fill();
     }
 
-    moveSnake() {
-        this.x += unit / 2;
+    moveSnake(dir) {
+        if (dir == "up") this.y -= unit / 2;
+        else if (dir == "down") this.y += unit / 2;
+        else if (dir == "left") this.x -= unit / 2;
+        else if (dir == "right") this.x += unit / 2;
         this.drawSnake();
     }
 }
@@ -44,6 +47,14 @@ class Food {
         ctx.fill();
     }
 }
+
+let key = "right";
+window.addEventListener("keypress", (e) => {
+    if (e.key == "w") key = "up";
+    else if (e.key == "a") key = "left";
+    else if (e.key == "s") key = "down";
+    else if (e.key == "d") key = "right";
+});
 
 let snake;
 let food;
@@ -73,7 +84,7 @@ const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.drawSnake();
     food.drawFood();
-    // snake.moveSnake();
+    // snake.moveSnake(key);
 };
 
 // Call animate()
