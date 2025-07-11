@@ -4,11 +4,30 @@ let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : 
 canvas.width = 80 * unit;
 canvas.height = 80 * unit;
 
+let gameArea = {
+    x: window.innerWidth / 2 - canvas.width / 2,
+    y: window.innerHeight / 2 - canvas.height / 2,
+};
+let snake = {
+    x: undefined,
+    y: undefined,
+    radius: 2 * unit,
+};
+let food = {
+    x: undefined,
+    y: undefined,
+    radius: unit,
+};
+
 // Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
     unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
     canvas.width = 80 * unit;
     canvas.height = 80 * unit;
+    gameArea = {
+        x: window.innerWidth / 2 - canvas.width / 2,
+        y: window.innerHeight / 2 - canvas.height / 2,
+    };
     init();
 });
 
@@ -36,7 +55,7 @@ class Snake {
 }
 
 class Food {
-    constructor(x, y) {
+    constructor(x, y, radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -58,17 +77,6 @@ window.addEventListener("keypress", (e) => {
     else if (e.key == "d") key = "right";
 });
 
-let snake = {
-    x: undefined,
-    y: undefined,
-    radius: 2 * unit,
-};
-let food = {
-    x: undefined,
-    y: undefined,
-    radius: unit,
-};
-
 const init = () => {
     snake.x = 2 * unit;
     snake.y = 2 * unit;
@@ -85,7 +93,10 @@ const init = () => {
 // Call init()
 init();
 
-const edgeDetected = () => {};
+const edgeCollisionResolution = () => {
+    // console.log(gameArea.x);
+    
+};
 
 // Animate function
 const animate = () => {
@@ -94,6 +105,7 @@ const animate = () => {
     snake.drawSnake();
     food.drawFood();
     // snake.moveSnake(key);
+    // edgeCollisionResolution();
 };
 
 // Call animate()
