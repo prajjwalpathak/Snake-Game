@@ -13,14 +13,15 @@ window.addEventListener("resize", () => {
 });
 
 class Snake {
-    constructor(x, y) {
+    constructor(x, y, radius) {
         this.x = x;
         this.y = y;
+        this.radius = radius;
     }
 
     drawSnake() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 2 * unit, 0, 2 * Math.PI, false);
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = "white";
         ctx.fill();
     }
@@ -38,11 +39,12 @@ class Food {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.radius = radius;
     }
 
     drawFood() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, unit, 0, 2 * Math.PI, false);
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
         ctx.fillStyle = "red";
         ctx.fill();
     }
@@ -56,27 +58,34 @@ window.addEventListener("keypress", (e) => {
     else if (e.key == "d") key = "right";
 });
 
-let snake;
-let food;
-
-let snakeLoc = { x: undefined, y: undefined };
-let foodLoc = { x: undefined, y: undefined };
+let snake = {
+    x: undefined,
+    y: undefined,
+    radius: 2 * unit,
+};
+let food = {
+    x: undefined,
+    y: undefined,
+    radius: unit,
+};
 
 const init = () => {
-    snakeLoc.x = 2 * unit;
-    snakeLoc.y = 2 * unit;
+    snake.x = 2 * unit;
+    snake.y = 2 * unit;
 
-    foodLoc.x = 8 * unit;
-    foodLoc.y = 8 * unit;
+    food.x = 8 * unit;
+    food.y = 8 * unit;
 
-    snake = new Snake(snakeLoc.x, snakeLoc.y);
-    food = new Food(foodLoc.x, foodLoc.y);
+    snake = new Snake(snake.x, snake.y, snake.radius);
+    food = new Food(food.x, food.y, food.radius);
     snake.drawSnake();
     food.drawFood();
 };
 
 // Call init()
 init();
+
+const edgeDetected = () => {};
 
 // Animate function
 const animate = () => {
