@@ -100,7 +100,7 @@ const init = () => {
 init();
 
 const edgeCollisionResolution = () => {
-    if (snake.x - snake.radius > gameArea.x) snake.x = gameArea.x - canvas.width;
+    if (snake.x - snake.radius > gameArea.x + canvas.width) snake.x = gameArea.x;
 };
 
 // Animate function
