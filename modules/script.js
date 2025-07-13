@@ -100,7 +100,7 @@ const init = () => {
 init();
 
 const edgeCollisionResolution = () => {
-    if (snake.x - snake.radius > gameArea.x + canvas.width) snake.x = gameArea.x;
+
 };
 
 // Animate function
@@ -109,8 +109,8 @@ const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     snake.drawSnake();
     food.drawFood();
-    snake.moveSnake(key);
-    edgeCollisionResolution();
+    // snake.moveSnake(key);
+    // edgeCollisionResolution();
 };
 
 // Call animate()
