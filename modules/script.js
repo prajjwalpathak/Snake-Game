@@ -1,11 +1,8 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
-canvas.width = 80 * unit;
-canvas.height = 80 * unit;
-canvas.style.position = "absolute";
-canvas.style.left = `${window.innerWidth / 2 - canvas.width / 2}px`;
-canvas.style.top = `${window.innerHeight / 2 - canvas.height / 2}px`;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 let gameArea = {
     x: undefined,
@@ -75,11 +72,8 @@ window.addEventListener("keypress", (e) => {
 
 const init = () => {
     unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
-    canvas.width = 80 * unit;
-    canvas.height = 80 * unit;
-    canvas.style.position = "absolute";
-    canvas.style.left = `${window.innerWidth / 2 - canvas.width / 2}px`;
-    canvas.style.top = `${window.innerHeight / 2 - canvas.height / 2}px`;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     gameArea.x = window.innerWidth / 2 - canvas.width / 2;
     gameArea.y = window.innerHeight / 2 - canvas.height / 2;
@@ -99,9 +93,7 @@ const init = () => {
 // Call init()
 init();
 
-const edgeCollisionResolution = () => {
-
-};
+const edgeCollisionResolution = () => {};
 
 // Animate function
 const animate = () => {
