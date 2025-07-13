@@ -7,22 +7,38 @@ canvas.height = window.innerHeight;
 let gameArea = {
     x: undefined,
     y: undefined,
+    width: undefined,
+    height: undefined,
 };
 let snake = {
     x: undefined,
     y: undefined,
-    radius: 2 * unit,
+    radius: undefined,
 };
 let food = {
     x: undefined,
     y: undefined,
-    radius: unit,
+    radius: undefined,
 };
 
 // Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
     init();
 });
+
+class GameArea {
+    constructor(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    drawGameArea() {
+        ctx.fillStyle = "black";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
 
 class Snake {
     constructor(x, y, radius) {
@@ -75,17 +91,23 @@ const init = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    gameArea.x = window.innerWidth / 2 - canvas.width / 2;
-    gameArea.y = window.innerHeight / 2 - canvas.height / 2;
+    gameArea.width = 80 * unit;
+    gameArea.height = 80 * unit;
+    gameArea.x = canvas.width / 2 - gameArea.width / 2;
+    gameArea.y = canvas.height / 2 - gameArea.height / 2;
 
-    snake.x = 2 * unit;
-    snake.y = 2 * unit;
+    snake.radius = 2 * unit;
+    snake.x = snake.radius + gameArea.x;
+    snake.y = snake.radius + gameArea.y;
 
-    food.x = 8 * unit;
-    food.y = 8 * unit;
+    food.radius = unit;
+    food.x = food.radius + gameArea.x + gameArea.width / 2;
+    food.y = food.radius + gameArea.y + gameArea.height / 2;
 
+    gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
     food = new Food(food.x, food.y, food.radius);
+    gameArea.drawGameArea();
     snake.drawSnake();
     food.drawFood();
 };
@@ -99,6 +121,7 @@ const edgeCollisionResolution = () => {};
 const animate = () => {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    gameArea.drawGameArea();
     snake.drawSnake();
     food.drawFood();
     // snake.moveSnake(key);
