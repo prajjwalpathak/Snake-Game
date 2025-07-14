@@ -116,14 +116,18 @@ const init = () => {
 init();
 
 const edgeCollisionResolution = () => {
-    if (snake.x - snake.radius > gameArea.x + gameArea.width) {
-        snake.x = gameArea.x - snake.radius;
-    }
+    if (snake.x - snake.radius > gameArea.x + gameArea.width) snake.x = gameArea.x - snake.radius;
+    if (snake.x + snake.radius < gameArea.x) snake.x = gameArea.x + gameArea.width + snake.radius;
+    if (snake.y - snake.radius > gameArea.y + gameArea.height) snake.y = gameArea.y - snake.radius;
+    if (snake.y + snake.radius < gameArea.y) snake.y = gameArea.y + gameArea.height + snake.radius;
 };
 
-const drawBorder = () => {
-    
-}
+// Draw frame to hide respawning of snake
+const drawFrame = () => {
+    ctx.lineWidth = 4 * unit;
+    ctx.strokeStyle = "gold";
+    ctx.strokeRect(gameArea.x - 2 * unit, gameArea.y - 2 * unit, gameArea.width + 4 * unit, gameArea.height + 4 * unit);
+};
 
 // Animate function
 const animate = () => {
@@ -133,6 +137,7 @@ const animate = () => {
     snake.drawSnake();
     food.drawFood();
     snake.moveSnake(key);
+    drawFrame();
     edgeCollisionResolution();
 };
 
