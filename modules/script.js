@@ -122,11 +122,17 @@ const edgeCollisionResolution = () => {
     if (snake.y + snake.radius < gameArea.y) snake.y = gameArea.y + gameArea.height + snake.radius;
 };
 
+const foodCollisionResolution = () => {
+    if (food.x < snake.x + snake.radius && food.x > snake.x - snake.radius && food.y < snake.y + snake.radius && food.y > snake.y - snake.radius) {
+        console.log("food");
+    }
+};
+
 // Draw frame to hide respawning of snake
 const drawFrame = () => {
-    ctx.lineWidth = 4 * unit;
-    ctx.strokeStyle = "gold";
-    ctx.strokeRect(gameArea.x - 2 * unit, gameArea.y - 2 * unit, gameArea.width + 4 * unit, gameArea.height + 4 * unit);
+    ctx.lineWidth = 5 * unit;
+    ctx.strokeStyle = "midnightBlue";
+    ctx.strokeRect(gameArea.x - 2.5 * unit, gameArea.y - 2.5 * unit, gameArea.width + 4.5 * unit, gameArea.height + 4.5 * unit);
 };
 
 // Animate function
@@ -139,6 +145,7 @@ const animate = () => {
     snake.moveSnake(key);
     drawFrame();
     edgeCollisionResolution();
+    foodCollisionResolution();
 };
 
 // Call animate()
