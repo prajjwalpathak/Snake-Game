@@ -1,3 +1,4 @@
+import { getRandom } from "./utils.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
@@ -20,6 +21,7 @@ let food = {
     y: undefined,
     radius: undefined,
 };
+let score = 0;
 
 // Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
@@ -101,19 +103,24 @@ const init = () => {
     snake.y = snake.radius + gameArea.y;
 
     food.radius = unit;
-    food.x = food.radius + gameArea.x + gameArea.width / 2;
-    food.y = food.radius + gameArea.y + gameArea.height / 2;
+    food.x = getRandom(gameArea.x + snake.radius, gameArea.x + gameArea.width - snake.radius);
+    food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
 
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
-    food = new Food(food.x, food.y, food.radius);
     gameArea.drawGameArea();
     snake.drawSnake();
-    food.drawFood();
 };
 
 // Call init()
 init();
+
+const drawFood = () => {
+    ctx.beginPath();
+    ctx.arc(food.x, food.y, food.radius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = "red";
+    ctx.fill();
+};
 
 const edgeCollisionResolution = () => {
     if (snake.x - snake.radius > gameArea.x + gameArea.width) snake.x = gameArea.x - snake.radius;
@@ -124,7 +131,9 @@ const edgeCollisionResolution = () => {
 
 const foodCollisionResolution = () => {
     if (food.x < snake.x + snake.radius && food.x > snake.x - snake.radius && food.y < snake.y + snake.radius && food.y > snake.y - snake.radius) {
-        console.log("food");
+        food.x = getRandom(gameArea.x + snake.radius, gameArea.x + gameArea.width - snake.radius);
+        food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
+        drawFood();
     }
 };
 
@@ -141,7 +150,7 @@ const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     gameArea.drawGameArea();
     snake.drawSnake();
-    food.drawFood();
+    drawFood();
     snake.moveSnake(key);
     drawFrame();
     edgeCollisionResolution();
