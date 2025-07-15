@@ -65,21 +65,6 @@ class Snake {
     }
 }
 
-class Food {
-    constructor(x, y, radius) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-    }
-
-    drawFood() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = "red";
-        ctx.fill();
-    }
-}
-
 let key = "right";
 window.addEventListener("keypress", (e) => {
     if (e.key == "w") key = "up";
@@ -93,14 +78,17 @@ const init = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    key = "right";
+    score = 0;
+
     gameArea.width = 80 * unit;
     gameArea.height = 80 * unit;
     gameArea.x = canvas.width / 2 - gameArea.width / 2;
     gameArea.y = canvas.height / 2 - gameArea.height / 2;
 
     snake.radius = 2 * unit;
-    snake.x = snake.radius + gameArea.x;
-    snake.y = snake.radius + gameArea.y;
+    snake.x = snake.radius + gameArea.x + gameArea.width / 4;
+    snake.y = snake.radius + gameArea.y + gameArea.height / 2;
 
     food.radius = unit;
     food.x = getRandom(gameArea.x + snake.radius, gameArea.x + gameArea.width - snake.radius);
@@ -123,10 +111,10 @@ const drawFood = () => {
 };
 
 const edgeCollisionResolution = () => {
-    if (snake.x - snake.radius > gameArea.x + gameArea.width) snake.x = gameArea.x - snake.radius;
-    if (snake.x + snake.radius < gameArea.x) snake.x = gameArea.x + gameArea.width + snake.radius;
-    if (snake.y - snake.radius > gameArea.y + gameArea.height) snake.y = gameArea.y - snake.radius;
-    if (snake.y + snake.radius < gameArea.y) snake.y = gameArea.y + gameArea.height + snake.radius;
+    if (snake.x + snake.radius >= gameArea.x + gameArea.width || snake.x - snake.radius <= gameArea.x || snake.y + snake.radius >= gameArea.y + gameArea.height || snake.y - snake.radius <= gameArea.y) {
+        console.log("Dead");
+        init();
+    }
 };
 
 const foodCollisionResolution = () => {
@@ -134,14 +122,15 @@ const foodCollisionResolution = () => {
         food.x = getRandom(gameArea.x + snake.radius, gameArea.x + gameArea.width - snake.radius);
         food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
         drawFood();
+        console.log(++score);
     }
 };
 
 // Draw frame to hide respawning of snake
 const drawFrame = () => {
-    ctx.lineWidth = 5 * unit;
+    ctx.lineWidth = unit;
     ctx.strokeStyle = "midnightBlue";
-    ctx.strokeRect(gameArea.x - 2.5 * unit, gameArea.y - 2.5 * unit, gameArea.width + 4.5 * unit, gameArea.height + 4.5 * unit);
+    ctx.strokeRect(gameArea.x - 0.5 * unit, gameArea.y - 0.5 * unit, gameArea.width + 0.5 * unit, gameArea.height + 0.5 * unit);
 };
 
 // Animate function
