@@ -5,6 +5,7 @@ let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// game elements
 let gameArea = {
     x: undefined,
     y: undefined,
@@ -28,6 +29,7 @@ window.addEventListener("resize", () => {
     init();
 });
 
+// Gmaearea class
 class GameArea {
     constructor(x, y, width, height) {
         this.x = x;
@@ -42,6 +44,7 @@ class GameArea {
     }
 }
 
+// Snake class
 class Snake {
     constructor(x, y, radius) {
         this.x = x;
@@ -65,6 +68,7 @@ class Snake {
     }
 }
 
+// event listener for keypress - snake movement
 let key = "right";
 window.addEventListener("keypress", (e) => {
     if (e.key == "w") key = "up";
@@ -103,6 +107,7 @@ const init = () => {
 // Call init()
 init();
 
+// draw food
 const drawFood = () => {
     ctx.beginPath();
     ctx.arc(food.x, food.y, food.radius, 0, 2 * Math.PI, false);
