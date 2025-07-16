@@ -115,6 +115,19 @@ const drawFood = () => {
     ctx.fill();
 };
 
+const startButton = () => {
+
+}
+const restartButton = () => {
+
+}
+const pauseButton = () => {
+
+}
+const resumeButton = () => {
+
+}
+
 const edgeCollisionResolution = () => {
     if (snake.x + snake.radius >= gameArea.x + gameArea.width || snake.x - snake.radius <= gameArea.x || snake.y + snake.radius >= gameArea.y + gameArea.height || snake.y - snake.radius <= gameArea.y) {
         console.log("Dead");
