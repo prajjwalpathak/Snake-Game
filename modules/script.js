@@ -28,24 +28,28 @@ let startButton = {
     y: undefined,
     width: undefined,
     height: undefined,
+    text: "Start",
 };
 let pauseButton = {
     x: undefined,
     y: undefined,
     width: undefined,
     height: undefined,
+    text: "Pause",
 };
 let resumeButton = {
     x: undefined,
     y: undefined,
     width: undefined,
     height: undefined,
+    text: "Resume",
 };
 let restartButton = {
     x: undefined,
     y: undefined,
     width: undefined,
     height: undefined,
+    text: "Restart",
 };
 
 // Resize canvas everytime the window is resized
@@ -123,9 +127,9 @@ const init = () => {
     food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
 
     startButton.x = gameArea.x;
-    startButton.y = gameArea.y + gameArea.height + 2*unit;
-    startButton.width = 8*unit;
-    startButton.height = 2*unit;
+    startButton.y = gameArea.y + gameArea.height + 4 * unit;
+    startButton.width = 8 * unit;
+    startButton.height = 2 * unit;
 
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
@@ -169,8 +173,14 @@ const drawFrame = () => {
 
 // Draw button function
 const drawButton = (button) => {
+    let fontSize = 2 * unit;
+    let textX = button.x;
+    let textY = button.y;
 
-}
+    ctx.font = `${fontSize}px "Press Start 2P"`;
+    ctx.fillStyle = "white";
+    ctx.fillText(button.text, textX, textY);
+};
 
 // Animate function
 const animate = () => {
@@ -183,6 +193,7 @@ const animate = () => {
     drawFrame();
     edgeCollisionResolution();
     foodCollisionResolution();
+    drawButton(startButton);
 };
 
 // Call animate()
