@@ -122,6 +122,11 @@ const init = () => {
     food.x = getRandom(gameArea.x + snake.radius, gameArea.x + gameArea.width - snake.radius);
     food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
 
+    startButton.x = gameArea.x;
+    startButton.y = gameArea.y + gameArea.height + 2*unit;
+    startButton.width = 8*unit;
+    startButton.height = 2*unit;
+
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
     gameArea.drawGameArea();
@@ -162,6 +167,11 @@ const drawFrame = () => {
     ctx.strokeRect(gameArea.x - 0.5 * unit, gameArea.y - 0.5 * unit, gameArea.width + 0.5 * unit, gameArea.height + 0.5 * unit);
 };
 
+// Draw button function
+const drawButton = (button) => {
+
+}
+
 // Animate function
 const animate = () => {
     requestAnimationFrame(animate);
@@ -169,7 +179,7 @@ const animate = () => {
     gameArea.drawGameArea();
     snake.drawSnake();
     drawFood();
-    snake.moveSnake(key);
+    // snake.moveSnake(key);
     drawFrame();
     edgeCollisionResolution();
     foodCollisionResolution();
