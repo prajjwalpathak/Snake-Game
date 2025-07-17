@@ -23,6 +23,30 @@ let food = {
     radius: undefined,
 };
 let score = 0;
+let startButton = {
+    x: undefined,
+    y: undefined,
+    width: undefined,
+    height: undefined,
+};
+let pauseButton = {
+    x: undefined,
+    y: undefined,
+    width: undefined,
+    height: undefined,
+};
+let resumeButton = {
+    x: undefined,
+    y: undefined,
+    width: undefined,
+    height: undefined,
+};
+let restartButton = {
+    x: undefined,
+    y: undefined,
+    width: undefined,
+    height: undefined,
+};
 
 // Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
@@ -114,19 +138,6 @@ const drawFood = () => {
     ctx.fillStyle = "red";
     ctx.fill();
 };
-
-const startButton = () => {
-
-}
-const restartButton = () => {
-
-}
-const pauseButton = () => {
-
-}
-const resumeButton = () => {
-
-}
 
 const edgeCollisionResolution = () => {
     if (snake.x + snake.radius >= gameArea.x + gameArea.width || snake.x - snake.radius <= gameArea.x || snake.y + snake.radius >= gameArea.y + gameArea.height || snake.y - snake.radius <= gameArea.y) {
