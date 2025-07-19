@@ -136,6 +136,16 @@ const init = () => {
     pauseButton.width = 8 * unit;
     pauseButton.height = 2 * unit;
 
+    resumeButton.x = gameArea.x + 4*startButton.width;
+    resumeButton.y = gameArea.y + gameArea.height + 4 * unit;
+    resumeButton.width = 8 * unit;
+    resumeButton.height = 2 * unit;
+
+    restartButton.x = gameArea.x + 6*startButton.width;
+    restartButton.y = gameArea.y + gameArea.height + 4 * unit;
+    restartButton.width = 8 * unit;
+    restartButton.height = 2 * unit;
+
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
     gameArea.drawGameArea();
@@ -200,6 +210,8 @@ const animate = () => {
     foodCollisionResolution();
     drawButton(startButton);
     drawButton(pauseButton);
+    drawButton(resumeButton);
+    drawButton(restartButton);
 };
 
 // Call animate()
