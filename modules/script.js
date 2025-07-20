@@ -131,17 +131,17 @@ const init = () => {
     startButton.width = 8 * unit;
     startButton.height = 2 * unit;
 
-    pauseButton.x = gameArea.x + 2*startButton.width;
+    pauseButton.x = gameArea.x + 2 * startButton.width;
     pauseButton.y = gameArea.y + gameArea.height + 4 * unit;
     pauseButton.width = 8 * unit;
     pauseButton.height = 2 * unit;
 
-    resumeButton.x = gameArea.x + 4*startButton.width;
+    resumeButton.x = gameArea.x + 4 * startButton.width;
     resumeButton.y = gameArea.y + gameArea.height + 4 * unit;
     resumeButton.width = 8 * unit;
     resumeButton.height = 2 * unit;
 
-    restartButton.x = gameArea.x + 6*startButton.width;
+    restartButton.x = gameArea.x + 6 * startButton.width;
     restartButton.y = gameArea.y + gameArea.height + 4 * unit;
     restartButton.width = 8 * unit;
     restartButton.height = 2 * unit;
@@ -195,6 +195,11 @@ const drawButton = (button) => {
     ctx.font = `${fontSize}px "Press Start 2P"`;
     ctx.fillStyle = "white";
     ctx.fillText(button.text, textX, textY);
+};
+
+const inArea = (area1, area2) => {
+    if (area1.x <= area2.x + area2.width && area1.x >= area2.x && area1.y <= area2.y + area2.height && area1.y >= area2.y) return true;
+    else return false;
 };
 
 // Animate function
