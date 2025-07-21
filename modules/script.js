@@ -28,28 +28,28 @@ let startButton = {
     y: undefined,
     width: undefined,
     height: undefined,
-    text: "Start",
+    text: "START",
 };
 let pauseButton = {
     x: undefined,
     y: undefined,
     width: undefined,
     height: undefined,
-    text: "Pause",
+    text: "PAUSE",
 };
 let resumeButton = {
     x: undefined,
     y: undefined,
     width: undefined,
     height: undefined,
-    text: "Resume",
+    text: "RESUME",
 };
 let restartButton = {
     x: undefined,
     y: undefined,
     width: undefined,
     height: undefined,
-    text: "Restart",
+    text: "RESTART",
 };
 
 let start = false;
@@ -137,23 +137,23 @@ const init = () => {
 
     startButton.x = gameArea.x;
     startButton.y = gameArea.y + gameArea.height + 4 * unit;
-    startButton.width = 10 * unit;
-    startButton.height = 2 * unit;
+    startButton.width = 12 * unit;
+    startButton.height = 2.4 * unit;
 
-    pauseButton.x = gameArea.x + 2 * startButton.width;
+    pauseButton.x = gameArea.x + 1.8 * startButton.width;
     pauseButton.y = gameArea.y + gameArea.height + 4 * unit;
-    pauseButton.width = 10 * unit;
-    pauseButton.height = 2 * unit;
+    pauseButton.width = 12 * unit;
+    pauseButton.height = 2.4 * unit;
 
-    resumeButton.x = gameArea.x + 4 * startButton.width;
+    resumeButton.x = gameArea.x + 3.6 * startButton.width;
     resumeButton.y = gameArea.y + gameArea.height + 4 * unit;
-    resumeButton.width = 12 * unit;
-    resumeButton.height = 2 * unit;
+    resumeButton.width = 14 * unit;
+    resumeButton.height = 2.4 * unit;
 
-    restartButton.x = gameArea.x + 6 * startButton.width;
+    restartButton.x = gameArea.x + 5.3 * startButton.width;
     restartButton.y = gameArea.y + gameArea.height + 4 * unit;
-    restartButton.width = 14 * unit;
-    restartButton.height = 2 * unit;
+    restartButton.width = 16 * unit;
+    restartButton.height = 2.4 * unit;
 
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
@@ -196,12 +196,12 @@ const drawFrame = () => {
 
 // Draw button function
 const drawButton = (button) => {
-    let fontSize = 2 * unit;
+    let fontSize = 2.4 * unit;
     let textX = button.x;
     let textY = button.y + button.height;
 
-    ctx.strokeStyle = "red";
-    ctx.strokeRect(button.x, button.y, button.width, button.height);
+    // ctx.strokeStyle = "red";
+    // ctx.strokeRect(button.x, button.y, button.width, button.height);
 
     ctx.font = `${fontSize}px "Press Start 2P"`;
     ctx.fillStyle = "white";
@@ -209,13 +209,13 @@ const drawButton = (button) => {
 };
 
 const drawScore = () => {
-    let fontSize = 2 * unit;
+    let fontSize = 3 * unit;
     let textX = gameArea.x;
     let textY = gameArea.y - 3 * unit;
 
     ctx.font = `${fontSize}px "Press Start 2P"`;
     ctx.fillStyle = "white";
-    ctx.fillText(score, textX, textY);
+    ctx.fillText(`SCORE - ${score}`, textX, textY);
 };
 
 window.addEventListener("click", (e) => {
@@ -223,10 +223,10 @@ window.addEventListener("click", (e) => {
     mouse.y = e.y;
 
     if (inArea(mouse, startButton) && !start) {
+        key = "right";
         start = true;
         pause = false;
-    }
-    else if (inArea(mouse, pauseButton) && !pause) pause = true;
+    } else if (inArea(mouse, pauseButton) && !pause) pause = true;
     else if (inArea(mouse, resumeButton) && start) pause = false;
     else if (inArea(mouse, restartButton)) init();
 });
