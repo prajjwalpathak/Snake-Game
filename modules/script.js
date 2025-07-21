@@ -1,4 +1,4 @@
-import { getRandom } from "./utils.js";
+import { getRandom, inArea } from "./utils.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
@@ -50,6 +50,11 @@ let restartButton = {
     width: undefined,
     height: undefined,
     text: "Restart",
+};
+
+let mouse = {
+    x: undefined,
+    y: undefined,
 };
 
 // Resize canvas everytime the window is resized
@@ -128,22 +133,22 @@ const init = () => {
 
     startButton.x = gameArea.x;
     startButton.y = gameArea.y + gameArea.height + 4 * unit;
-    startButton.width = 8 * unit;
+    startButton.width = 10 * unit;
     startButton.height = 2 * unit;
 
     pauseButton.x = gameArea.x + 2 * startButton.width;
     pauseButton.y = gameArea.y + gameArea.height + 4 * unit;
-    pauseButton.width = 8 * unit;
+    pauseButton.width = 10 * unit;
     pauseButton.height = 2 * unit;
 
     resumeButton.x = gameArea.x + 4 * startButton.width;
     resumeButton.y = gameArea.y + gameArea.height + 4 * unit;
-    resumeButton.width = 8 * unit;
+    resumeButton.width = 12 * unit;
     resumeButton.height = 2 * unit;
 
     restartButton.x = gameArea.x + 6 * startButton.width;
     restartButton.y = gameArea.y + gameArea.height + 4 * unit;
-    restartButton.width = 8 * unit;
+    restartButton.width = 14 * unit;
     restartButton.height = 2 * unit;
 
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
@@ -190,17 +195,25 @@ const drawFrame = () => {
 const drawButton = (button) => {
     let fontSize = 2 * unit;
     let textX = button.x;
-    let textY = button.y;
+    let textY = button.y + button.height;
+
+    ctx.strokeStyle = "red";
+    ctx.strokeRect(button.x, button.y, button.width, button.height);
 
     ctx.font = `${fontSize}px "Press Start 2P"`;
     ctx.fillStyle = "white";
     ctx.fillText(button.text, textX, textY);
 };
 
-const inArea = (area1, area2) => {
-    if (area1.x <= area2.x + area2.width && area1.x >= area2.x && area1.y <= area2.y + area2.height && area1.y >= area2.y) return true;
-    else return false;
-};
+window.addEventListener("click", (e) => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+
+    if (inArea(mouse, startButton)) console.log("Start");
+    else if (inArea(mouse, pauseButton)) console.log("Pause");
+    else if (inArea(mouse, resumeButton)) console.log("Resume");
+    else if (inArea(mouse, restartButton)) console.log("Restart");
+});
 
 // Animate function
 const animate = () => {
