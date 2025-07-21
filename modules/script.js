@@ -52,6 +52,8 @@ let restartButton = {
     text: "Restart",
 };
 
+let start = false;
+let pause = true;
 let mouse = {
     x: undefined,
     y: undefined,
@@ -116,6 +118,8 @@ const init = () => {
     canvas.height = window.innerHeight;
 
     key = "right";
+    start = false;
+    pause = true;
     score = 0;
 
     gameArea.width = 80 * unit;
@@ -170,7 +174,6 @@ const drawFood = () => {
 
 const edgeCollisionResolution = () => {
     if (snake.x + snake.radius >= gameArea.x + gameArea.width || snake.x - snake.radius <= gameArea.x || snake.y + snake.radius >= gameArea.y + gameArea.height || snake.y - snake.radius <= gameArea.y) {
-        console.log("Dead");
         init();
     }
 };
@@ -179,8 +182,8 @@ const foodCollisionResolution = () => {
     if (food.x < snake.x + snake.radius && food.x > snake.x - snake.radius && food.y < snake.y + snake.radius && food.y > snake.y - snake.radius) {
         food.x = getRandom(gameArea.x + snake.radius, gameArea.x + gameArea.width - snake.radius);
         food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
+        ++score;
         drawFood();
-        console.log(++score);
     }
 };
 
@@ -208,21 +211,24 @@ const drawButton = (button) => {
 const drawScore = () => {
     let fontSize = 2 * unit;
     let textX = gameArea.x;
-    let textY = gameArea.y - 3*unit;
+    let textY = gameArea.y - 3 * unit;
 
     ctx.font = `${fontSize}px "Press Start 2P"`;
     ctx.fillStyle = "white";
     ctx.fillText(score, textX, textY);
-}
+};
 
 window.addEventListener("click", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
 
-    if (inArea(mouse, startButton)) console.log("Start");
-    else if (inArea(mouse, pauseButton)) console.log("Pause");
-    else if (inArea(mouse, resumeButton)) console.log("Resume");
-    else if (inArea(mouse, restartButton)) console.log("Restart");
+    if (inArea(mouse, startButton) && !start) {
+        start = true;
+        pause = false;
+    }
+    else if (inArea(mouse, pauseButton) && !pause) pause = true;
+    else if (inArea(mouse, resumeButton) && start) pause = false;
+    else if (inArea(mouse, restartButton)) init();
 });
 
 // Animate function
@@ -233,7 +239,7 @@ const animate = () => {
     drawFrame();
     snake.drawSnake();
     drawFood();
-    // snake.moveSnake(key);
+    if (!pause) snake.moveSnake(key);
     edgeCollisionResolution();
     foodCollisionResolution();
     drawButton(startButton);
