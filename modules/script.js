@@ -205,6 +205,16 @@ const drawButton = (button) => {
     ctx.fillText(button.text, textX, textY);
 };
 
+const drawScore = () => {
+    let fontSize = 2 * unit;
+    let textX = gameArea.x;
+    let textY = gameArea.y - 3*unit;
+
+    ctx.font = `${fontSize}px "Press Start 2P"`;
+    ctx.fillStyle = "white";
+    ctx.fillText(score, textX, textY);
+}
+
 window.addEventListener("click", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
@@ -220,16 +230,17 @@ const animate = () => {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     gameArea.drawGameArea();
+    drawFrame();
     snake.drawSnake();
     drawFood();
     // snake.moveSnake(key);
-    drawFrame();
     edgeCollisionResolution();
     foodCollisionResolution();
     drawButton(startButton);
     drawButton(pauseButton);
     drawButton(resumeButton);
     drawButton(restartButton);
+    drawScore();
 };
 
 // Call animate()
