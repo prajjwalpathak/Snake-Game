@@ -12,6 +12,12 @@ let gameArea = {
     width: undefined,
     height: undefined,
 };
+let snakeBody = [];
+let snakeNode = {
+    x: undefined,
+    y: undefined,
+    radius: undefined,
+};
 let snake = {
     x: undefined,
     y: undefined,
@@ -121,6 +127,7 @@ const init = () => {
     start = false;
     pause = true;
     score = 0;
+    snakeBody = [];
 
     gameArea.width = 80 * unit;
     gameArea.height = 80 * unit;
@@ -145,7 +152,7 @@ const init = () => {
     pauseButton.width = 12 * unit;
     pauseButton.height = 2.4 * unit;
 
-    resumeButton.x = gameArea.x + 3.6 * startButton.width;
+    resumeButton.x = gameArea.x + 3.5 * startButton.width;
     resumeButton.y = gameArea.y + gameArea.height + 4 * unit;
     resumeButton.width = 14 * unit;
     resumeButton.height = 2.4 * unit;
@@ -184,6 +191,8 @@ const foodCollisionResolution = () => {
         food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
         ++score;
         drawFood();
+        snake = new Snake(snake.x, snake.y, snake.radius);
+        snakeBody.push(snake);
     }
 };
 
@@ -231,6 +240,12 @@ window.addEventListener("click", (e) => {
     else if (inArea(mouse, restartButton)) init();
 });
 
+// const drawSnakeBody = () => {
+//     snakeBody.forEach((snake) => {
+//         snake.drawSnake();
+//     });
+// };
+
 // Animate function
 const animate = () => {
     requestAnimationFrame(animate);
@@ -247,6 +262,11 @@ const animate = () => {
     drawButton(resumeButton);
     drawButton(restartButton);
     drawScore();
+    // drawSnakeBody();
+    snakeBody.forEach((snake) => {
+        // snake.drawSnake();
+        snake.moveSnake();
+    });
 };
 
 // Call animate()
