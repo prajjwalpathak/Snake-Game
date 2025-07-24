@@ -109,6 +109,29 @@ class Snake {
     }
 }
 
+class Node {
+    constructor(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+
+    drawNode() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = "white";
+        ctx.fill();
+    }
+
+    moveNode(dir) {
+        if (dir == "up") this.y -= unit / 2;
+        else if (dir == "down") this.y += unit / 2;
+        else if (dir == "left") this.x -= unit / 2;
+        else if (dir == "right") this.x += unit / 2;
+        this.drawNode();
+    }
+}
+
 // event listener for keypress - snake movement
 let key = "right";
 window.addEventListener("keypress", (e) => {
@@ -191,8 +214,7 @@ const foodCollisionResolution = () => {
         food.y = getRandom(gameArea.y + snake.radius, gameArea.y + gameArea.height - snake.radius);
         ++score;
         drawFood();
-        snake = new Snake(snake.x, snake.y, snake.radius);
-        snakeBody.push(snake);
+        addSnakeNode();
     }
 };
 
@@ -240,6 +262,24 @@ window.addEventListener("click", (e) => {
     else if (inArea(mouse, restartButton)) init();
 });
 
+const addSnakeNode = () => {
+    let snakeObj = new Snake(snake.x, snake.y, snake.radius);
+    snakeBody.push(snakeObj);
+}
+
+const setSnakeNodeProp = () => {
+    snakeBody.push(snake);
+    snakeBody[0].x = snake.x;
+    snakeBody[0].y = snake.y;
+    let i = 0;
+    snakeBody[0].radius = snake.radius;
+    snakeBody.forEach(s => {
+        s.x = snakeBody[0].x+i;
+        s.y = snakeBody[0].y+i;
+        i += 5;
+    });
+}
+
 // const drawSnakeBody = () => {
 //     snakeBody.forEach((snake) => {
 //         snake.drawSnake();
@@ -263,9 +303,10 @@ const animate = () => {
     drawButton(restartButton);
     drawScore();
     // drawSnakeBody();
+    // setSnakeNodeProp();
     snakeBody.forEach((snake) => {
         // snake.drawSnake();
-        snake.moveSnake();
+        // snake.moveSnake();
     });
 };
 
