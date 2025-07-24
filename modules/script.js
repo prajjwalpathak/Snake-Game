@@ -121,7 +121,6 @@ const init = () => {
     start = false;
     pause = true;
     score = 0;
-    snakeBody = [];
 
     gameArea.width = 80 * unit;
     gameArea.height = 80 * unit;
@@ -158,8 +157,6 @@ const init = () => {
 
     gameArea = new GameArea(gameArea.x, gameArea.y, gameArea.width, gameArea.height);
     snake = new Snake(snake.x, snake.y, snake.radius);
-    snakeNode = new Node(snake.x, snake.y, snake.radius);
-    snakeBody.push(snakeNode);
     gameArea.drawGameArea();
     snake.drawSnake();
 };
