@@ -236,8 +236,9 @@ window.addEventListener("click", (e) => {
 });
 
 const addInArray = () => {
+    let n = 5;
     array = [];
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= n; i++) {
         let node = {
             x: snake.x + 2 * i * snake.radius,
             y: snake.y,
