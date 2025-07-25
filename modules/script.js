@@ -161,6 +161,8 @@ const init = () => {
     snake = new Snake(snake.x, snake.y, snake.radius);
     gameArea.drawGameArea();
     snake.drawSnake();
+
+    array = [];
 };
 
 // Call init()
@@ -234,6 +236,7 @@ window.addEventListener("click", (e) => {
 });
 
 const addInArray = () => {
+    array = [];
     for (let i = 1; i <= 5; i++) {
         let node = {
             x: snake.x + 2 * i * snake.radius,
@@ -243,7 +246,7 @@ const addInArray = () => {
         array.push(node);
     }
 }
-addInArray();
+// addInArray();
 console.log(array);
 const drawNode = (node) => {
     ctx.beginPath();
@@ -268,6 +271,7 @@ const animate = () => {
     drawButton(resumeButton);
     drawButton(restartButton);
     drawScore();
+    addInArray();
     array.forEach(node => {
         drawNode(node);
     });
