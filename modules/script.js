@@ -59,6 +59,8 @@ let mouse = {
     y: undefined,
 };
 
+let array = [];
+
 // Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
     init();
@@ -231,6 +233,25 @@ window.addEventListener("click", (e) => {
     else if (inArea(mouse, restartButton)) init();
 });
 
+const addInArray = () => {
+    for (let i = 1; i <= 5; i++) {
+        let node = {
+            x: snake.x + 2 * i * snake.radius,
+            y: snake.y,
+            radius: snake.radius,
+        }
+        array.push(node);
+    }
+}
+addInArray();
+console.log(array);
+const drawNode = (node) => {
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, node.radius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+}
+
 // Animate function
 const animate = () => {
     requestAnimationFrame(animate);
@@ -247,6 +268,10 @@ const animate = () => {
     drawButton(resumeButton);
     drawButton(restartButton);
     drawScore();
+    array.forEach(node => {
+        drawNode(node);
+    });
+
 };
 
 // Call animate()
