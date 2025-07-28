@@ -285,4 +285,6 @@
 import { getRandom, inArea } from "./utils.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth > window.innerHeight ? window.innerWidth / 4 : window.innerHeight / 4;
+canvas.height = window.innerWidth > window.innerHeight ? window.innerWidth / 4 : window.innerHeight / 4;
 let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
