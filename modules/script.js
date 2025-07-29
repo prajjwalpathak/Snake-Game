@@ -285,8 +285,8 @@
 import { getRandom, inArea } from "./utils.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth > window.innerHeight ? window.innerWidth / 2.4 : window.innerHeight / 2.4;
-canvas.height = window.innerWidth > window.innerHeight ? window.innerWidth / 2.4 : window.innerHeight / 2.4;
+canvas.width = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
+canvas.height = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
 let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
 
 //Resize canvas everytime the window is resized
@@ -295,8 +295,8 @@ window.addEventListener("resize", () => {
 });
 
 const init = () => {
-    canvas.width = window.innerWidth > window.innerHeight ? window.innerWidth / 2.4 : window.innerHeight / 2.4;
-    canvas.height = window.innerWidth > window.innerHeight ? window.innerWidth / 2.4 : window.innerHeight / 2.4;
+    canvas.width = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
+    canvas.height = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
     unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
 }
 
