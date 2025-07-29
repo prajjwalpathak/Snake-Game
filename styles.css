@@ -12,7 +12,26 @@ body
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
     background-color: rgb(20, 20, 20);
+}
+
+button
+{
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: burlywood;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 .game-background
