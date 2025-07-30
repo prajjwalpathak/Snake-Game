@@ -301,6 +301,16 @@ const init = () => {
 
 init();
 
+// Animate function
+const animate = () => {
+    requestAnimationFrame(animate);
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
+
+// Call animate()
+animate();
+
+
 // Event-Listeners
 
 //Resize canvas everytime the window is resized
