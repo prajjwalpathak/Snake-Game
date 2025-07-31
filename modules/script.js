@@ -292,6 +292,9 @@ let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : 
 // Game Components
 let start = false;
 
+let gameArea = {
+}
+
 const init = () => {
     canvas.width = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
     canvas.height = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
@@ -317,3 +320,6 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
+
+// get canvas pixel perfect coordinates
+// use coodrinates to make pixel perfect calc
