@@ -16,6 +16,7 @@ let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : 
 
 // Game Components
 let start = false;
+let score = 0;
 
 let gameArea = {
 }
@@ -25,13 +26,19 @@ const init = () => {
     canvas.height = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
     unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
     start = false;
+    score = 0;
 }
 
 init();
 
 const startGame = () => {
     start = true;
+    score = 0;
     console.log("Start");
+}
+
+const updateScore = () => {
+    console.log(score++);
 }
 
 // Animate function
