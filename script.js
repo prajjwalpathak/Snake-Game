@@ -4,16 +4,6 @@ canvas.width = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4
 canvas.height = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
 let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : window.innerWidth * 0.01;
 
-// // Random function
-// const getRandom = (min, max) => {
-//   return Math.random() * (max - min) + min;
-// };
-
-// const inArea = (area1, area2) => {
-//     if (area1.x <= area2.x + area2.width && area1.x >= area2.x && area1.y <= area2.y + area2.height && area1.y >= area2.y) return true;
-//     else return false;
-// };
-
 // Game Components
 let start = false;
 let score = 0;
