@@ -40,13 +40,16 @@ const animate = () => {
 // Call animate()
 animate();
 
-
 // Event-Listeners
 
 //Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
     init();
 });
+
+window.addEventListener("mousemove", (e) => {
+    console.log([e.x, e.y]);
+})
 
 // get canvas pixel perfect coordinates
 // use coodrinates to make pixel perfect calc
