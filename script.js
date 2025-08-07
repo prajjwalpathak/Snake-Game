@@ -47,9 +47,6 @@ window.addEventListener("resize", () => {
     init();
 });
 
-window.addEventListener("mousemove", (e) => {
-    console.log([e.x, e.y]);
-})
-
 // get canvas pixel perfect coordinates
 // use coodrinates to make pixel perfect calc
+// code to extend snake body when food is consumed 
