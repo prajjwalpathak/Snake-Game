@@ -8,9 +8,6 @@ let unit = window.innerHeight < window.innerWidth ? window.innerHeight * 0.01 : 
 let start = false;
 let score = 0;
 
-let gameArea = {
-}
-
 const init = () => {
     canvas.width = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
     canvas.height = window.innerWidth > window.innerHeight ? window.innerHeight / 1.4 : window.innerWidth / 1.4;
@@ -49,4 +46,5 @@ window.addEventListener("resize", () => {
 
 // get canvas pixel perfect coordinates
 // use coodrinates to make pixel perfect calc
-// code to extend snake body when food is consumed 
+// code to extend snake body when food is consumed
+// Learn a standard method for snake game and in general games
