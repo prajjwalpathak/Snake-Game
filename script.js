@@ -49,3 +49,4 @@ window.addEventListener("resize", () => {
 // code to extend snake body when food is consumed
 // Learn a standard method for snake game and in general games
 // Leran more about webgpu or maybe vulkan
+// Install linux
