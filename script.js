@@ -50,3 +50,4 @@ window.addEventListener("resize", () => {
 // Learn a standard method for snake game and in general games
 // Leran more about webgpu or maybe vulkan
 // Install linux
+// Revise OOP, make projects
