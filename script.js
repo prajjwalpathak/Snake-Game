@@ -51,3 +51,4 @@ window.addEventListener("resize", () => {
 // Leran more about webgpu or maybe vulkan
 // Install linux
 // Revise OOP, make projects
+// Learn Go and Go backend
