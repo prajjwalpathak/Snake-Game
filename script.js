@@ -52,3 +52,4 @@ window.addEventListener("resize", () => {
 // Install linux
 // Revise OOP, make projects
 // Learn Go and Go backend
+// Learn CS core subjects
