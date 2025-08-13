@@ -43,13 +43,3 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
-
-// get canvas pixel perfect coordinates
-// use coodrinates to make pixel perfect calc
-// code to extend snake body when food is consumed
-// Learn a standard method for snake game and in general games
-// Leran more about webgpu or maybe vulkan
-// Install linux
-// Revise OOP, make projects
-// Learn Go and Go backend
-// Learn CS core subjects
