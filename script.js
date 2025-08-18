@@ -47,3 +47,4 @@ window.addEventListener("resize", () => {
 // Learn Go
 // Learn DSA
 // Learn Go backend
+// Learn OOP, CN, DBMS, OS
