@@ -48,3 +48,4 @@ window.addEventListener("resize", () => {
 // Learn DSA
 // Learn Go backend
 // Learn OOP, CN, DBMS, OS
+// Learn core subjects, make Go backend projects
