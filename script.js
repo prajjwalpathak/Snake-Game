@@ -43,9 +43,3 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
-
-// Learn Go
-// Learn DSA
-// Learn Go backend
-// Learn OOP, CN, DBMS, OS
-// Learn core subjects, make Go backend projects
