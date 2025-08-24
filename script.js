@@ -39,9 +39,10 @@ animate();
 
 // Event-Listeners
 
-//Resize canvas everytime the window is resized
+// Resize canvas everytime the window is resized
 window.addEventListener("resize", () => {
     init();
 });
 
-//Go backend
+// Go backend
+// DSA
