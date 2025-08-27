@@ -43,7 +43,3 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
-
-// Go backend
-// DSA
-// Core Project
