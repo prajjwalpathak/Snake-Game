@@ -43,3 +43,6 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
+
+// Learn Go
+// Learn Go backend
