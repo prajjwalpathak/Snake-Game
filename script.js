@@ -48,3 +48,4 @@ window.addEventListener("resize", () => {
 // Learn Go backend
 // Create a Go project (Dev Project)
 // One Core Project
+// One ML Project
