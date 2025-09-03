@@ -50,3 +50,4 @@ window.addEventListener("resize", () => {
 // One Core Project
 // One ML Project
 // Prepare Resume
+// Complete 1 ML project
