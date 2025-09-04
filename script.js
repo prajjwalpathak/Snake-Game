@@ -51,3 +51,4 @@ window.addEventListener("resize", () => {
 // One ML Project
 // Prepare Resume
 // Complete 1 ML project
+// Learn DSA
