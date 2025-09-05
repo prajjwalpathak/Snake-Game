@@ -43,12 +43,3 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
-
-// Learn Go
-// Learn Go backend
-// Create a Go project (Dev Project)
-// One Core Project
-// One ML Project
-// Prepare Resume
-// Complete 1 ML project
-// Learn DSA
