@@ -48,3 +48,4 @@ window.addEventListener("resize", () => {
 // Backend development
 // DSA
 // Resume
+// CGPA
