@@ -43,10 +43,3 @@ animate();
 window.addEventListener("resize", () => {
     init();
 });
-
-// Learn Go
-// Backend development
-// DSA
-// Resume
-// CGPA
-// Core
